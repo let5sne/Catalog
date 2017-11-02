@@ -1,3 +1,3 @@
-# mantle-preorder
+# Catalog
 
-a simple site show product for pre order
+a simple catalog manage system for product.
