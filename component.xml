@@ -3,5 +3,6 @@
            name="Catalog" version="1.0.0">
     <depends-on name="mantle-udm" version="2.0.0"/>
     <depends-on name="mantle-usl" version="2.0.0"/>
-    
+    <depends-on name="Alioss" version="1.0.0"/>
+
 </component>
