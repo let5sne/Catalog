@@ -80,13 +80,26 @@ along with this software (see the LICENSE.md file). If not, see
                     </field-layout>
                 </form-single>
                 <render-mode><text type="html,vuet"><![CDATA[
-                    <script src="/resstatic/libs/ckeditor/ckeditor.js" type="text/javascript"></script>
-                    <script src="/resstatic/libs/ckeditor/config.js" type="text/javascript"></script>
-                    <script src="/resstatic/libs/ckeditor/adapters/jquery.js" type="text/javascript"></script>
-                    <script>CKEDITOR.dtd.$removeEmpty['i'] = false;
-                    $('#NewTextForm_contentText').ckeditor({ allowedContent:true, linkJavaScriptLinksAllowed:true, fillEmptyBlocks:false,
-                        extraAllowedContent:'p(*)[*]{*};div(*)[*]{*};li(*)[*]{*};ul(*)[*]{*};i(*)[*]{*};span(*)[*]{*}',extraPlugins:'filebrowser,image,imagepaste,filetools',
-                        width:'100%', height:'600px', removeButtons:'Save,NewPage,Preview' }).editor.on('change', function(evt) { this.updateElement(); });</script>
+                                            <script src="/ueditor/ueditor.config.js" type="text/javascript"></script>
+                            <script src="/ueditor/ueditor.all.js" type="text/javascript"></script>
+                            <link rel="stylesheet" type="text/css" href="/ueditor/themes/default/css/ueditor.css" />
+                            <script type="text/javascript">
+                            //初始化
+                            var ue = UE.getEditor('NewTextForm_contentText', {
+                                //toolbars:[['Undo', 'Redo','|','Bold', 'italic', 'underline','strikethrough','removeformat','formatmatch',
+                                //           'forecolor','backcolor','insertorderedlist','insertunorderedlist','|',
+                                //           'fontfamily','fontsize','justifyleft','justifyright','justifycenter','justifyjustify','|',
+                                //          'insertimage','insertvideo','|','preview','searchreplace','FullScreen']],
+                                //关闭字数统计
+                                wordCount:true,
+                                maximumWords:2000,
+                                autoHeightEnabled: true,
+                                //关闭elementPath
+                                elementPathEnabled:false,
+                                //默认的编辑区域高度
+                                initialFrameHeight:600
+                                //更多其他参数，请参考ueditor.config.js中的配置项
+                            });</script>
                 ]]></text></render-mode>
             </container-dialog>
         </box-toolbar><box-body>
