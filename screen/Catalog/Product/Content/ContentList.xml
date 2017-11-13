@@ -17,7 +17,15 @@ along with this software (see the LICENSE.md file). If not, see
 
     <parameter name="productId" required="true"/>
 
-    <transition name="createContent"><service-call name="mantle.product.ProductServices.create#ProductContent"/>
+    <transition name="createContent">
+        <actions>
+            <if condition="productContentTypeEnumId=='PcntImageSmall'&amp;&amp;contentLocation?.startsWith('http')">
+                <then>
+                    <service-call name="org.let5sne.preorder.PreorderServices.get#UrlImgContentToAlioss" in-map="[contentLocation:contentLocation,productId:productId]" out-map="context"/>
+                </then>
+            </if>
+            <service-call name="mantle.product.ProductServices.create#ProductContent" in-map="context"/>
+        </actions>
         <default-response url="."/></transition>
     <transition name="downloadContent" read-only="true">
         <parameter name="productContentId"/>
